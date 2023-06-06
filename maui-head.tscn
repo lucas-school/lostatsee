@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4lxcqh7cbr7a"]
+
+[ext_resource type="ArrayMesh" uid="uid://dhcq0dqualtfh" path="res://art/sponge-head/LUCASHEAD.obj" id="1_w5r54"]
+
+[node name="head" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_w5r54")

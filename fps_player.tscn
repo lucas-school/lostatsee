@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3lgr07t4uu7r"]
+
+[ext_resource type="Script" path="res://fps_player.gd" id="1_aw5hb"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wqpd1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yhjsp"]
+
+[node name="FPSPlayer" type="CharacterBody3D"]
+script = ExtResource("1_aw5hb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_wqpd1")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75701, 0)
+fov = 60.0
+far = 200.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1, 2.08165e-12)
+visible = false
+mesh = SubResource("CapsuleMesh_yhjsp")

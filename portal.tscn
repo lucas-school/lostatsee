@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://tjt4h6pd1lo4"]
+
+[ext_resource type="Script" path="res://portal.gd" id="1_utuev"]
+[ext_resource type="Shader" uid="uid://coovbfwh8cky0" path="res://portal.tres" id="2_xmsa5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oeuxt"]
+render_priority = 0
+shader = ExtResource("2_xmsa5")
+
+[sub_resource type="SphereMesh" id="SphereMesh_8vx3e"]
+lightmap_size_hint = Vector2i(25, 17)
+material = SubResource("ShaderMaterial_oeuxt")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_81vfv"]
+radius = 1.17141
+height = 10.9914
+
+[node name="Portal" type="Area3D"]
+script = ExtResource("1_utuev")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("SphereMesh_8vx3e")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_81vfv")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.997874, 0)
+light_color = Color(1, 0, 0, 1)
+light_energy = 13.0
+shadow_enabled = true
+omni_range = 49.4962
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 6.283
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

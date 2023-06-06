@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dhcq0dqualtfh"
+path="res://.godot/imported/LUCASHEAD.obj-578e4ede1aeab82f02bdb61a87535f93.mesh"
+
+[deps]
+
+files=["res://.godot/imported/LUCASHEAD.obj-578e4ede1aeab82f02bdb61a87535f93.mesh"]
+
+source_file="res://art/sponge-head/LUCASHEAD.obj"
+dest_files=["res://.godot/imported/LUCASHEAD.obj-578e4ede1aeab82f02bdb61a87535f93.mesh", "res://.godot/imported/LUCASHEAD.obj-578e4ede1aeab82f02bdb61a87535f93.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

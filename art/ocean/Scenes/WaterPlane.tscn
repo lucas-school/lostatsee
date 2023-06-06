@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbt5pfn1trdyj"]
+
+[ext_resource type="Shader" path="res://Shaders/Water.gdshader" id="1_w1tkc"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gg3e2"]
+resource_local_to_scene = true
+size = Vector2(10.05, 10.05)
+subdivide_width = 199
+subdivide_depth = 199
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ykp76"]
+render_priority = 0
+shader = ExtResource("1_w1tkc")
+
+[node name="WaterPlane" type="MeshInstance3D"]
+mesh = SubResource("PlaneMesh_gg3e2")
+surface_material_override/0 = SubResource("ShaderMaterial_ykp76")

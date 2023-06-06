@@ -1,0 +1,172 @@
+[gd_scene load_steps=16 format=3 uid="uid://n08bddtymbcn"]
+
+[ext_resource type="Script" path="res://example_scene.gd" id="1_a78bb"]
+[ext_resource type="Texture2D" uid="uid://c3agifutfxiqe" path="res://art/SpaceHDR#1/Crab Nebula/hdr.png" id="2_g040b"]
+[ext_resource type="PackedScene" uid="uid://d3lgr07t4uu7r" path="res://fps_player.tscn" id="4_tfw08"]
+[ext_resource type="PackedScene" uid="uid://tjt4h6pd1lo4" path="res://portal.tscn" id="5_nfmr0"]
+[ext_resource type="PackedScene" uid="uid://d3bdnr1of3ck1" path="res://bridge.tscn" id="6_fyl56"]
+[ext_resource type="PackedScene" uid="uid://01wkqsrg0cgm" path="res://streetlight.tscn" id="7_7h1d1"]
+[ext_resource type="PackedScene" uid="uid://dkdjjpqp8w7ce" path="res://water.tscn" id="9_1f1lq"]
+[ext_resource type="PackedScene" uid="uid://cxmobq2axwobr" path="res://cargo_container.tscn" id="9_4hhbv"]
+[ext_resource type="PackedScene" uid="uid://dlavxt7o0my6d" path="res://boat.tscn" id="9_nlxbt"]
+[ext_resource type="PackedScene" uid="uid://dl7h4iijnyglu" path="res://ocean_floor.tscn" id="10_qlyp8"]
+[ext_resource type="PackedScene" uid="uid://d4lxcqh7cbr7a" path="res://maui-head.tscn" id="11_k7nvg"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_wap6h"]
+panorama = ExtResource("2_g040b")
+
+[sub_resource type="Sky" id="Sky_g560d"]
+sky_material = SubResource("PanoramaSkyMaterial_wap6h")
+
+[sub_resource type="Environment" id="Environment_2oben"]
+background_mode = 2
+sky = SubResource("Sky_g560d")
+tonemap_mode = 3
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(1, 1, 1, 1)
+fog_light_energy = 0.2
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="FogMaterial" id="FogMaterial_51jve"]
+density = 0.3
+emission = Color(0, 0, 0.235294, 1)
+edge_fade = 0.527803
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_a78bb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+visible = false
+light_color = Color(0.639888, 0.639888, 0.639888, 1)
+light_energy = 0.808
+shadow_enabled = true
+shadow_blur = 6.505
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2oben")
+
+[node name="FogVolume3" type="FogVolume" parent="WorldEnvironment"]
+shape = 4
+material = SubResource("FogMaterial_51jve")
+
+[node name="FPSPlayer" parent="." instance=ExtResource("4_tfw08")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.136968, 12.5844, -2.48639)
+
+[node name="Portal" parent="." instance=ExtResource("5_nfmr0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0472641, 4.78938, -7.8963)
+
+[node name="bridge" parent="." instance=ExtResource("6_fyl56")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.9762, -7.40598, -8.05536)
+
+[node name="bridge2" parent="." instance=ExtResource("6_fyl56")]
+transform = Transform3D(1, -3.48787e-16, -3.48787e-16, -3.48787e-16, -1, -8.74228e-08, -3.48787e-16, 8.74228e-08, -1, 21.9762, -7.40598, -8.05536)
+
+[node name="streetlight" parent="." instance=ExtResource("7_7h1d1")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 45.6665, -0.142056, -11.8858)
+
+[node name="streetlight3" parent="." instance=ExtResource("7_7h1d1")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 24.2123, -0.142056, -11.8858)
+
+[node name="streetlight2" parent="." instance=ExtResource("7_7h1d1")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 45.6665, -0.142056, -4.24891)
+
+[node name="cargo-container" parent="." instance=ExtResource("9_4hhbv")]
+transform = Transform3D(1.2246, -0.00592532, -0.866205, -0.0835454, 1.49216, -0.12832, 0.862187, 0.153006, 1.21788, 15.1628, 0.48693, -11.2479)
+
+[node name="cargo-container2" parent="." instance=ExtResource("9_4hhbv")]
+transform = Transform3D(1.37607, 0, 0.597019, 0, 1.5, 0, -0.597019, 0, 1.37607, 32.0439, 0.0217437, -7.04159)
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.84669, 0, 0)
+size = Vector3(68.0951, 42.4392, 58.0392)
+origin_offset = Vector3(0, 5.59766, -6.68311)
+
+[node name="ocean" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.06065, 0)
+
+[node name="water" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4394, -10.2542, -6.57704)
+
+[node name="water9" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.561, -10.254, -156.577)
+
+[node name="water8" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.561, -10.254, 143.423)
+
+[node name="water7" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.439, -10.254, -156.577)
+
+[node name="water6" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.439, -10.254, 143.423)
+
+[node name="water5" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.439, -10.254, -156.577)
+
+[node name="water4" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.439, -10.254, 143.423)
+
+[node name="water10" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.561, -10.254, 293.423)
+
+[node name="water11" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.439, -10.254, 293.423)
+
+[node name="water12" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.439, -10.254, 293.423)
+
+[node name="water13" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.561, -10.254, 443.423)
+
+[node name="water14" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.439, -10.254, 443.423)
+
+[node name="water15" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.439, -10.254, 443.423)
+
+[node name="water16" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.561, -10.254, 593.423)
+
+[node name="water17" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.439, -10.254, 593.423)
+
+[node name="water18" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.439, -10.254, 593.423)
+
+[node name="water3" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -129.561, -10.254, -6.577)
+
+[node name="water2" parent="ocean" instance=ExtResource("9_1f1lq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.439, -10.254, -6.577)
+
+[node name="StartPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.571, 2.35584, 501.949)
+
+[node name="boat" parent="." instance=ExtResource("9_nlxbt")]
+transform = Transform3D(-0.029928, 0, 0.999552, 0, 1, 0, -0.999552, 0, -0.029928, 59.5093, -5.80877, 511.508)
+
+[node name="ocean-floor" parent="." instance=ExtResource("10_qlyp8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.634, -30, -8.515)
+
+[node name="head" parent="." instance=ExtResource("11_k7nvg")]
+transform = Transform3D(-0.917456, 0, 0.397836, 0, 1, 0, -0.397836, 0, -0.917456, 5.15282, -14.4, 35.2207)
+
+[node name="head2" parent="." instance=ExtResource("11_k7nvg")]
+transform = Transform3D(0.670375, 0, 0.742023, 0, 1, 0, -0.742023, 0, 0.670375, 5.15282, -14.4, -47.4215)
+
+[node name="head3" parent="." instance=ExtResource("11_k7nvg")]
+transform = Transform3D(-0.223131, 0, 0.974788, 0, 1, 0, -0.974788, 0, -0.223131, -60.8879, -14.4, 0.949326)
+
+[node name="head4" parent="." instance=ExtResource("11_k7nvg")]
+transform = Transform3D(-0.644657, 0, -0.764472, 0, 1, 0, 0.764472, 0, -0.644657, 102.061, -14.4, 38.2596)
+
+[node name="head5" parent="." instance=ExtResource("11_k7nvg")]
+transform = Transform3D(0.741309, 0, -0.671164, 0, 1, 0, 0.671164, 0, 0.741309, 89.7243, -14.4, -53.706)
+
+[node name="start_boat" type="Node3D" parent="."]
+
+[node name="startTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true

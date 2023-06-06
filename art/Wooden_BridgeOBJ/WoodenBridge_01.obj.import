@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cauvbfkrt33rs"
+path="res://.godot/imported/WoodenBridge_01.obj-fc9039f855accf66401e252a050d5fb9.mesh"
+
+[deps]
+
+files=["res://.godot/imported/WoodenBridge_01.obj-fc9039f855accf66401e252a050d5fb9.mesh"]
+
+source_file="res://art/Wooden_BridgeOBJ/WoodenBridge_01.obj"
+dest_files=["res://.godot/imported/WoodenBridge_01.obj-fc9039f855accf66401e252a050d5fb9.mesh", "res://.godot/imported/WoodenBridge_01.obj-fc9039f855accf66401e252a050d5fb9.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

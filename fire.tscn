@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cewlbj5sxyj8l"]
+
+[ext_resource type="Shader" uid="uid://dt80f4w1qddl2" path="res://fire.tres" id="1_vpw5r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b3axp"]
+render_priority = 0
+shader = ExtResource("1_vpw5r")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_b4w3i"]
+lightmap_size_hint = Vector2i(17, 9)
+material = SubResource("ShaderMaterial_b3axp")
+height = 1.0
+
+[sub_resource type="Gradient" id="Gradient_43jau"]
+offsets = PackedFloat32Array(0.00331126, 1)
+colors = PackedColorArray(1, 0.180392, 0, 1, 1, 1, 1, 1)
+
+[node name="fire" type="Node3D"]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+lifetime = 0.46
+mesh = SubResource("CapsuleMesh_b4w3i")
+direction = Vector3(2.08165e-12, 1, 2.08165e-12)
+gravity = Vector3(2.08165e-12, 9.8, 2.08165e-12)
+initial_velocity_min = 4.0
+initial_velocity_max = 5.0
+color = Color(1, 0.0901961, 0.00392157, 1)
+color_ramp = SubResource("Gradient_43jau")

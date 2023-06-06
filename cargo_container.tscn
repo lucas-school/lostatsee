@@ -1,0 +1,54 @@
+[gd_scene load_steps=14 format=3 uid="uid://cxmobq2axwobr"]
+
+[ext_resource type="ArrayMesh" uid="uid://ck5whkprhwmbr" path="res://art/cargo-container/Cargo_Container.obj" id="1_7uvb2"]
+[ext_resource type="Texture2D" uid="uid://drr67lbpwi3qk" path="res://art/cargo-container/Cargo Container TEXTURES/Locking bar_Base_color.png" id="2_haudf"]
+[ext_resource type="Texture2D" uid="uid://csnmy2gnvqaop" path="res://art/cargo-container/Cargo Container TEXTURES/Locking bar_Metallic.png" id="3_fovkc"]
+[ext_resource type="Texture2D" uid="uid://d3pl4hn5gd646" path="res://art/cargo-container/Cargo Container TEXTURES/Locking bar_Normal.png" id="4_t4dyo"]
+[ext_resource type="Texture2D" uid="uid://rc0j15qr28ek" path="res://art/cargo-container/Cargo Container TEXTURES/Locking bar_Roughness.png" id="5_ftlya"]
+[ext_resource type="Texture2D" uid="uid://lfopbeesh1mw" path="res://art/cargo-container/Cargo Container TEXTURES/Container_Base_color.png" id="6_klchy"]
+[ext_resource type="Texture2D" uid="uid://dt2srybe4v6l4" path="res://art/cargo-container/Cargo Container TEXTURES/Container_Metallic.png" id="7_g7vwb"]
+[ext_resource type="Texture2D" uid="uid://ttsupqxxbk8f" path="res://art/cargo-container/Cargo Container TEXTURES/Container_Height.png" id="8_0wdfl"]
+[ext_resource type="Texture2D" uid="uid://c3mbtgkixlkj2" path="res://art/cargo-container/Cargo Container TEXTURES/Container_Normal.png" id="8_q84d7"]
+[ext_resource type="Texture2D" uid="uid://cbjyynsxj8jhc" path="res://art/cargo-container/Cargo Container TEXTURES/Container_Roughness.png" id="9_x3d0f"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_revfu"]
+albedo_texture = ExtResource("2_haudf")
+metallic = 1.0
+metallic_texture = ExtResource("3_fovkc")
+roughness_texture = ExtResource("5_ftlya")
+normal_enabled = true
+normal_texture = ExtResource("4_t4dyo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13nvg"]
+albedo_texture = ExtResource("6_klchy")
+metallic = 1.0
+metallic_texture = ExtResource("7_g7vwb")
+roughness_texture = ExtResource("9_x3d0f")
+normal_enabled = true
+normal_texture = ExtResource("8_q84d7")
+clearcoat_texture = ExtResource("9_x3d0f")
+heightmap_texture = ExtResource("8_0wdfl")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_868ik"]
+size = Vector3(6.37406, 2.77155, 2.8366)
+
+[node name="cargo-container" type="Node3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_7uvb2")
+surface_material_override/0 = SubResource("StandardMaterial3D_revfu")
+surface_material_override/1 = SubResource("StandardMaterial3D_revfu")
+surface_material_override/2 = SubResource("StandardMaterial3D_revfu")
+surface_material_override/3 = SubResource("StandardMaterial3D_revfu")
+surface_material_override/4 = SubResource("StandardMaterial3D_13nvg")
+surface_material_override/5 = SubResource("StandardMaterial3D_13nvg")
+surface_material_override/6 = SubResource("StandardMaterial3D_13nvg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30456, 0)
+shape = SubResource("BoxShape3D_868ik")
